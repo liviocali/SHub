@@ -35,9 +35,9 @@ rm geant4.10.06.p02.tar.gz
 mkdir geant4.10.06.p02-build
 mkdir geant4.10.06.p02-install
 cd geant4.10.06.p02-build/
-cmake -DCMAKE_INSTALL_PREFIX=/root/Software/geant4.10.06.p02-install -DGEANT4_BUILD_MULTITHREADED=ON -DGEANT4_USE_GDML=ON -DGEANT4_INSTALL_DATA=ON ../geant4.10.06.p02
+cmake -DCMAKE_INSTALL_PREFIX=/Software/geant4.10.06.p02-install -DGEANT4_BUILD_MULTITHREADED=ON -DGEANT4_USE_GDML=ON -DGEANT4_INSTALL_DATA=ON ../geant4.10.06.p02
 make -j 8
-make install -j8
+make install -j 8
 cd ..
 rm -r geant4.10.06.p02
 rm -r geant4.10.06.p02-build
