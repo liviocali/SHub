@@ -54,18 +54,18 @@ echo "Sourcing geant4.10.06.p02 ..."
 echo "Linking LD_LIBRARY_PATH ..." 
 export LD_LIBRARY_PATH="/Software/root_v6.22.02/lib:/Software/geant4.10.06.p02-install/lib:$LD_LIBRARY_PATH"
 
-echo "Linking Geant4 DATA ..." 
-export G4ABLA=/Software/geant4.10.06.p02-install/share/Geant4-10.6.2/data/G4ABLA3.1
-export G4EMLOW=/Software/geant4.10.06.p02-install/share/Geant4-10.6.2/data/G4EMLOW7.9.1
-export G4ENSDFSTATE=/Software/geant4.10.06.p02-install/share/Geant4-10.6.2/data/G4ENSDFSTATE2.2
-export G4INCL=/Software/geant4.10.06.p02-install/share/Geant4-10.6.2/data/G4INCL1.0
-export G4NDL=/Software/geant4.10.06.p02-install/share/Geant4-10.6.2/data/G4NDL4.6
-export G4PARTICLEXS=/Software/geant4.10.06.p02-install/share/Geant4-10.6.2/data/G4PARTICLEXS2.1
-export G4PII=/Software/geant4.10.06.p02-install/share/Geant4-10.6.2/data/G4PII1.3
-export G4SAIDDATA=/Software/geant4.10.06.p02-install/share/Geant4-10.6.2/data/G4SAIDDATA2.0
-export PhotonEvaporation=/Software/geant4.10.06.p02-install/share/Geant4-10.6.2/data/PhotonEvaporation5.5
-export RadioactiveDecay=/Software/geant4.10.06.p02-install/share/Geant4-10.6.2/data/RadioactiveDecay5.4
-export RealSurface=/Software/geant4.10.06.p02-install/share/Geant4-10.6.2/data/RealSurface2.1.1
+echo "Linking G4 DATA ..." 
+export G4ABLADATA=/Software/geant4.10.06.p02-install/share/Geant4-10.6.2/data/G4ABLA3.1
+export G4LEDATA=/Software/geant4.10.06.p02-install/share/Geant4-10.6.2/data/G4EMLOW7.9.1
+export G4ENSDFSTATEDATA=/Software/geant4.10.06.p02-install/share/Geant4-10.6.2/data/G4ENSDFSTATE2.2
+export G4INCLDATA=/Software/geant4.10.06.p02-install/share/Geant4-10.6.2/data/G4INCL1.0
+export G4NEUTRONHPDATA=/Software/geant4.10.06.p02-install/share/Geant4-10.6.2/data/G4NDL4.6
+export G4PARTICLEXSDATA=/Software/geant4.10.06.p02-install/share/Geant4-10.6.2/data/G4PARTICLEXS2.1
+export G4PIIDATA=/Software/geant4.10.06.p02-install/share/Geant4-10.6.2/data/G4PII1.3
+export G4SAIDXSDATA=/Software/geant4.10.06.p02-install/share/Geant4-10.6.2/data/G4SAIDDATA2.0
+export G4LEVELGAMMADATA=/Software/geant4.10.06.p02-install/share/Geant4-10.6.2/data/PhotonEvaporation5.5
+export G4RADIOACTIVEDATA=/Software/geant4.10.06.p02-install/share/Geant4-10.6.2/data/RadioactiveDecay5.4
+export G4REALSURFACEDATA=/Software/geant4.10.06.p02-install/share/Geant4-10.6.2/data/RealSurface2.1.1
 
 cd /Software/ArCubeOptSim/run
 python run_01_OptSim_creatMacros.py
