@@ -46,7 +46,14 @@ rm -r geant4.10.06.p02
 rm -r geant4.10.06.p02-build
 
 %runscript
-echo "This gets run when you run the image!" 
+echo "Sourcing root_v6.22.02 ..." 
 /bin/dash . /Software/root_v6.22.02/bin/thisroot.sh
+echo "Sourcing geant4.10.06.p02 ..." 
 /bin/dash . /Software/geant4.10.06.p02-install/bin/geant4.sh
 
+echo "Linking LD_LIBRARY_PATH" 
+export LD_LIBRARY_PATH="/Software/root_v6.22.02/lib:/Software/geant4.10.06.p02-install/lib:$LD_LIBRARY_PATH"
+
+cd /Software/ArCubeOptSim/run
+python run_01_OptSim_creatMacros.py
+python run_02_OptSim_run.py
