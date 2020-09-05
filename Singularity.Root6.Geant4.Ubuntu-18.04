@@ -8,7 +8,7 @@ CONTACT patrick_koller@gmx.ch
 %post  
 echo "This section happens once after bootstrap to build the image."
 apt-get -y update
-apt-get -y install htop wget git python-numpy
+apt-get -y install htop vim wget git python-numpy
 apt-get -y install dpkg-dev cmake g++ gcc binutils libx11-dev libxpm-dev libxft-dev libxext-dev python libssl-dev
 
 mkdir /Software
