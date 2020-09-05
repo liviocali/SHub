@@ -14,12 +14,14 @@ apt-get -y install dpkg-dev cmake g++ gcc binutils libx11-dev libxpm-dev libxft-
 mkdir /Software
 
 cd /Software/
-pwd
 wget https://root.cern/download/root_v6.22.02.Linux-ubuntu18-x86_64-gcc7.5.tar.gz
 tar -xf root_v6.22.02.Linux-ubuntu18-x86_64-gcc7.5.tar.gz
 mv root root_v6.22.02
 rm root_v6.22.02.Linux-ubuntu18-x86_64-gcc7.5.tar.gz
-/bin/dash . /Software/root_v6.22.02/bin/thisroot.sh
+
+%environment
+echo "Sourcing root_v6.22.02 ..." 
+. /Software/root_v6.22.02/bin/thisroot.sh
 
 %runscript
 echo "This gets run when you run the image!" 
