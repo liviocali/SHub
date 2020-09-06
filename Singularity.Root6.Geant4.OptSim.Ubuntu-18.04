@@ -66,8 +66,8 @@ export G4ENSDFSTATEDATA="/Software/geant4.10.06.p02-install/share/Geant4-10.6.2/
 
 %runscript
 echo "Choose app to run:" 
-echo "  --app sim (process voxels a to b, arguments: a b)" 
-echo "  --app lut (produces look-up-table, arguments: none)"
+echo "  --app sim -> process voxels no. a to b, arguments: int(a) int(b)"
+echo "  --app lut -> produce photon look-up-table, arguments: none"
 
 %apprun sim
 mkdir /output/macro_files /output/root_files /output/log_files 
