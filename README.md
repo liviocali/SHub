@@ -14,12 +14,14 @@ Performing the Singularity default checks should return: `PASS: (retval=0)`.
 mv PPKoller-SHub-master-root6.geant4.optsim.ubuntu-18.04.simg OptSim.simg
 singularity check --tag default OptSim.simg
 ```
-### 4. Run instructions:
+### 3. Run instructions:
 ```bash
 mkdir output
 singularity run -B output:/output OptSim.simg
 ```
 (where we use the `-B` argument to bind the host-dir `output` to the img-dir `/output`)
+### 4. Run apps:
+(more details coming soon!)
 ### [optional]
 #### Build and shell into writable sandbox image:
 ```bash
