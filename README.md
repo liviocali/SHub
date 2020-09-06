@@ -8,7 +8,13 @@ Recipes for Singularity images to be built on Singularity Hub.
 ```bash
 singularity pull shub://PPKoller/SHub:root6.geant4.optsim.ubuntu-18.04
 ```
+### Image Default Checks:
+```bash
+mv PPKoller-SHub-master-root6.geant4.optsim.ubuntu-18.04.simg OptSim.simg
+singularity check --tag default OptSim.simg
+```
+Performing the Singularity default checks should return: `PASS: (retval=0)`
 ### Run Instructions:
 ```bash
-singularity run ...
+singularity run ... (coming soon!)
 ```
