@@ -20,8 +20,8 @@ mv root root_v6.22.02
 rm root_v6.22.02.Linux-ubuntu18-x86_64-gcc7.5.tar.gz
 
 %environment
-echo "Sourcing root_v6.22.02 ..." 
-. /Software/root_v6.22.02/bin/thisroot.sh
+echo "Linking LD_LIBRARY_PATH ..." 
+export LD_LIBRARY_PATH="/Software/root_v6.22.02/lib:$LD_LIBRARY_PATH"
 
 %runscript
 echo "This gets run when you run the image!" 
