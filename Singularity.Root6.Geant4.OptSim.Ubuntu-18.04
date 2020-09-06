@@ -65,8 +65,16 @@ echo "Linking G4DATA paths ..."
 export G4ENSDFSTATEDATA="/Software/geant4.10.06.p02-install/share/Geant4-10.6.2/data/G4ENSDFSTATE2.2"
 
 %runscript
-echo "This gets run when you run the image!" 
+echo "Choose app to run:" 
+echo "  --app sim (process voxels a to b, arguments: a b)" 
+echo "  --app lut (produces look-up-table, arguments: none)"
+
+%apprun sim
+mkdir /output/macro_files /output/root_files /output/log_files 
 cd /Software/ArCubeOptSim/run
 python run_01_OptSim_creatMacros.py
 python run_02_OptSim_run.py
 
+%apprun lut
+cd /Software/ArCubeOptSim/run
+/Software/root_v6.22.02/bin/root.exe -l run_03_OptSim_createLUT.C
