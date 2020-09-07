@@ -79,7 +79,7 @@ export USRG="0"
 export USRO="0"
 export VOX1=$1
 export VOX2=$2
-export "preparing to process voxels $VOX1 to $VOX2 ..."
+echo "preparing to process voxels $VOX1 to $VOX2 ..."
 python run_01_OptSim_creatMacros.py
 python run_02_OptSim_run.py
 
@@ -91,7 +91,7 @@ echo "preparing to read user defined voxel table ..."
 export USRO="0"
 export VOX1=$1
 export VOX2=$2
-export "preparing to process voxels $VOX1 to $VOX2 ..."
+echo "preparing to process voxels $VOX1 to $VOX2 ..."
 python run_01_OptSim_creatMacros.py
 python run_02_OptSim_run.py
 
@@ -103,7 +103,7 @@ export USRO="1"
 echo "preparing to read user defined optical properties ..."
 export VOX1=$1
 export VOX2=$2
-export "preparing to process voxels $VOX1 to $VOX2 ..."
+echo "preparing to process voxels $VOX1 to $VOX2 ..."
 python run_01_OptSim_creatMacros.py
 python run_02_OptSim_run.py
 
@@ -116,7 +116,7 @@ export USRO="1"
 echo "preparing to read user defined optical properties ..."
 export VOX1=$1
 export VOX2=$2
-export "preparing to process voxels $VOX1 to $VOX2 ..."
+echo "preparing to process voxels $VOX1 to $VOX2 ..."
 python run_01_OptSim_creatMacros.py
 python run_02_OptSim_run.py
 
