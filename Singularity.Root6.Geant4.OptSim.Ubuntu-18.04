@@ -66,12 +66,57 @@ export G4ENSDFSTATEDATA="/Software/geant4.10.06.p02-install/share/Geant4-10.6.2/
 
 %runscript
 echo "Choose app to run:" 
-echo "  --app sim -> process voxels no. a to b, arguments: int(a) int(b)"
-echo "  --app lut -> produce photon look-up-table, arguments: none"
+echo "  --app sim          ->  process voxels no. a to b, arguments: int(a) int(b)"
+echo "  --app sim_usr_geo  ->  process voxels no. a to b, arguments: int(a) int(b), user-defined voxel table"
+echo "  --app sim_usr_opt  ->  process voxels no. a to b, arguments: int(a) int(b), user-defined opt. properties"
+echo "  --app sim_usr      ->  process voxels no. a to b, arguments: int(a) int(b), user-defined voxel table / opt. properties"
+echo "  --app lut          ->  produce photon look-up-table, arguments: none"
 
 %apprun sim
-mkdir /output/macro_files /output/root_files /output/log_files 
+mkdir /output/macro_files /output/root_files /output/log_files
 cd /Software/ArCubeOptSim/run
+export USRG="0"
+export USRO="0"
+export VOX1=$1
+export VOX2=$2
+export "preparing to process voxels $VOX1 to $VOX2 ..."
+python run_01_OptSim_creatMacros.py
+python run_02_OptSim_run.py
+
+%apprun sim_usr_geo
+mkdir /output/macro_files /output/root_files /output/log_files
+cd /Software/ArCubeOptSim/run
+export USRG="1"
+echo "preparing to read user defined voxel table ..."
+export USRO="0"
+export VOX1=$1
+export VOX2=$2
+export "preparing to process voxels $VOX1 to $VOX2 ..."
+python run_01_OptSim_creatMacros.py
+python run_02_OptSim_run.py
+
+%apprun sim_usr_opt
+mkdir /output/macro_files /output/root_files /output/log_files
+cd /Software/ArCubeOptSim/run
+export USRG="0"
+export USRO="1"
+echo "preparing to read user defined optical properties ..."
+export VOX1=$1
+export VOX2=$2
+export "preparing to process voxels $VOX1 to $VOX2 ..."
+python run_01_OptSim_creatMacros.py
+python run_02_OptSim_run.py
+
+%apprun sim_usr
+mkdir /output/macro_files /output/root_files /output/log_files
+cd /Software/ArCubeOptSim/run
+export USRG="1"
+echo "preparing to read user defined voxel table ..."
+export USRO="1"
+echo "preparing to read user defined optical properties ..."
+export VOX1=$1
+export VOX2=$2
+export "preparing to process voxels $VOX1 to $VOX2 ..."
 python run_01_OptSim_creatMacros.py
 python run_02_OptSim_run.py
 
