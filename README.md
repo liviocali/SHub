@@ -38,10 +38,12 @@ Run the simulation using the default statistics, voxel geometry and optical prop
   
   *Opt. properties*: [PPKoller/ArCubeOptSim/tree/LUT/resources/datafiles](https://github.com/PPKoller/ArCubeOptSim/tree/LUT/resources/datafiles)
   
-- **sim_usr_geo**\
-- **sim_usr_opt**\
-- **sim_usr**\
-- **lut**\
+  `singularity run --app sim OptSim.simg`
+  
+- **sim_usr_geo**
+- **sim_usr_opt**
+- **sim_usr**
+- **lut**
 ### [optional]
 #### Build and shell into writable sandbox image:
 ```bash
