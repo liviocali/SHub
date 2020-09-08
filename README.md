@@ -29,6 +29,9 @@ singularity run OptSim.simg
 ```
 ### 5. Run apps:
 There are five apps available within the container: four simulaion related apps that run the optical simulation with different levels of user defined input and one app that allows you to build the photon look-up-table using the output created by running the simulation.
+
+:warning: **A separate thread will be started on your machine for each selected voxel!**
+
 - **sim**\
 Run the simulation on voxels no. 0 to 9 using the default statistics, voxel geometry and optical properties.
 
@@ -64,6 +67,8 @@ Build the photon look-up-table using the output created by running the simulatio
 
   `singularity run --app lut OptSim.simg`
   
+:warning: **A separate thread will be started on your machine for each selected voxel!**
+
 ### 6. Output
 After running the optical simulation, log and error files will appear in `output/log_files/` and root files will appear in `output/root_files/`.
 
