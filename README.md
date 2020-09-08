@@ -4,7 +4,7 @@ Recipes for Singularity images to be built on Singularity Hub.
 [![https://www.singularity-hub.org/static/img/hosted-singularity--hub-%23e32929.svg](https://www.singularity-hub.org/static/img/hosted-singularity--hub-%23e32929.svg)](https://singularity-hub.org/collections/4666)
 
 ## ArgonCube Optical Simulation [<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="30">](https://github.com/PPKoller/ArCubeOptSim) [<img src="https://github.com/PPKoller/SHub/blob/master/.ArCube_Logo.png" width="100" align="right">](https://argoncube.org/)
-### 1. Pull image:
+### 1. Pull the container image:
 The optical simulation software container can be pulled directly via the Singularity command:\
 (size ~ 1.4G)
 ```bash
@@ -28,7 +28,12 @@ Running the container without any arguments will return a list of the available 
 singularity run OptSim.simg
 ```
 ### 5. Run apps:
-(more details coming soon!)
+There are five apps available within the container: four simulaion related apps that run the optical simulation with different levels of user defined input and one app that allows you to build the photon look-up-table using the output created by running the simulation.
+#### sim
+#### sim_usr_geo
+#### sim_usr_opt
+#### sim_usr
+#### lut
 ### [optional]
 #### Build and shell into writable sandbox image:
 ```bash
