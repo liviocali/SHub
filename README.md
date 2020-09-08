@@ -29,11 +29,19 @@ singularity run OptSim.simg
 ```
 ### 5. Run apps:
 There are five apps available within the container: four simulaion related apps that run the optical simulation with different levels of user defined input and one app that allows you to build the photon look-up-table using the output created by running the simulation.
-#### sim
-#### sim_usr_geo
-#### sim_usr_opt
-#### sim_usr
-#### lut
+- **sim**\
+Run the simulation using the default statistics, voxel geometry and optical properties.
+
+  *Statistics*: 1'000 events per voxel / 10'000 photons per event
+  
+  *Voxel geometry*: 32 x 128 x 32 voxels / 9.460 x 9.858 x 9.692 mm<sup>3</sup> [x,y,z]
+  
+  *Opt. properties*: [PPKoller/ArCubeOptSim/tree/LUT/resources/datafiles](https://github.com/PPKoller/ArCubeOptSim/tree/LUT/resources/datafiles)
+  
+- **sim_usr_geo**\
+- **sim_usr_opt**\
+- **sim_usr**\
+- **lut**\
 ### [optional]
 #### Build and shell into writable sandbox image:
 ```bash
