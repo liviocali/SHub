@@ -64,7 +64,7 @@ Build the photon look-up-table using the output created by running the simulatio
 
   `singularity run --app lut OptSim.simg`
   
-#### Output
+### 6. Output
 After running the optical simulation, log and error files will appear in `output/log_files/` and root files will appear in `output/root_files/`.
 
 After running the LUT builder, the photon look-up-table will apper in `output/` as `OptSim_LUT_ArgonCube2x2.root`.
