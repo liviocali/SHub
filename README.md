@@ -67,7 +67,7 @@ Build the photon look-up-table using the output created by running the simulatio
 
   `singularity run --app lut OptSim.simg`
   
-  And in case the simulation war run with user defined statistics and voxel geometry:
+  And in case the simulation was run with user defined statistics and voxel geometry:
 
   `singularity run --app lut_usr OptSim.simg`
   
