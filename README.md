@@ -13,7 +13,7 @@ singularity pull shub://PPKoller/SHub:root6.geant4.optsim.ubuntu-18.04
 ### 2. Image default checks:
 Performing the Singularity default checks should return `PASS: (retval=0)`.
 ```bash
-mv SHub-root6.geant4.optsim.ubuntu-18.04.simg OptSim.simg
+mv SHub-root6.geant4.optsim.ubuntu-18.04.simg OptSim.sif
 singularity check --tag default OptSim.simg
 ```
 ### 3. Export I/O binding paths:
