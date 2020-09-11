@@ -62,10 +62,14 @@ Run the simulation on voxels no. 0 to 9 with user defined statistics, voxel geom
 
   `singularity run --app sim_usr OptSim.simg 0 9`
     
-- **lut**\
+- **lut / lut_usr**\
 Build the photon look-up-table using the output created by running the simulation. Herefore, voxel number '0' needs to have been processed and the respective root file `OptSim_00000000.root` has to be present in `output/root_files/`.
 
   `singularity run --app lut OptSim.simg`
+  
+  And in case the simulation was run with user defined statistics and voxel geometry:
+
+  `singularity run --app lut_usr OptSim.simg`
   
 :warning: **A separate thread will be started on your machine for each selected voxel!**
 
