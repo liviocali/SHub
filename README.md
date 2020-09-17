@@ -20,7 +20,7 @@ singularity check --tag default OptSim.simg
 Using the environment variable `$SINGULARITY_BINDPATH` there won't be any need to bind I/O paths manually later.
 ```bash
 mkdir input output
-export SINGULARITY_BINDPATH="input/,output/"
+export SINGULARITY_BINDPATH="input/:/input,output/:/output"
 ```
 ### 4. Run instructions:
 Running the container without any arguments will return a list of the available apps including a short description on what it does and what parameters you might need to provide.
