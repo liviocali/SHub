@@ -30,12 +30,12 @@ singularity run OptSim.simg
 ### 5. Run apps:
 There are five apps available within the container: four simulaion related apps that run the optical simulation with different levels of user defined input and one app that allows you to build the photon look-up-table using the output created by running the simulation.
 
-:warning: **A separate thread will be started on your machine for each selected voxel!**
+**The selected voxels will be processed sequentially. Separate container calls are needed for parallel processing.**
 
 - **sim**\
 Run the simulation on voxels no. 0 to 9 using the default statistics, voxel geometry and optical properties.
 
-  `singularity run --app sim OptSim.simg 0 9`
+  `singularity run --app sim OptSim.simg 0 10`
 
   *Statistics*: 1'000 events per voxel / 10'000 photons per event
   
@@ -46,21 +46,21 @@ Run the simulation on voxels no. 0 to 9 using the default statistics, voxel geom
 - **sim_usr_geo**\
 Run the simulation on voxels no. 0 to 9 with user defined statistics and voxel geometry. Herefore, the file `OptSim_LUT_voxel_table.txt` has to be placed in the folder `input/` before executing the simulation.
 
-  `singularity run --app sim_usr_geo OptSim.simg 0 9`
+  `singularity run --app sim_usr_geo OptSim.simg 0 10`
   
   The file `OptSim_LUT_voxel_table.txt` can be created by the Jupyter Notebook provided [here](create_OptSim_LUT_voxel_table.ipynb).
 
 - **sim_usr_opt**\
 Run the simulation on voxels no. 0 to 9 with user defined optical properties. Herefore, a folder `datafiles/` containing all optical properties files has to be placed in the folder `input/` before executing the simulation.
 
-  `singularity run --app sim_usr_opt OptSim.simg 0 9`
+  `singularity run --app sim_usr_opt OptSim.simg 0 10`
   
   The folder `datafiles/` containing the default optical properties files can be found [here](https://github.com/PPKoller/ArCubeOptSim/tree/LUT/resources/datafiles).
   
 - **sim_usr**\
 Run the simulation on voxels no. 0 to 9 with user defined statistics, voxel geometry and optical properties. (see instructions above)
 
-  `singularity run --app sim_usr OptSim.simg 0 9`
+  `singularity run --app sim_usr OptSim.simg 0 10`
     
 - **lut / lut_usr**\
 Build the photon look-up-table using the output created by running the simulation. Herefore, voxel number '0' needs to have been processed and the respective root file `OptSim_00000000.root` has to be present in `output/root_files/`.
@@ -71,8 +71,6 @@ Build the photon look-up-table using the output created by running the simulatio
 
   `singularity run --app lut_usr OptSim.simg`
   
-:warning: **A separate thread will be started on your machine for each selected voxel!**
-
 ### 6. Output
 After running the optical simulation, log and error files will appear in `output/log_files/` and root files will appear in `output/root_files/`.
 
