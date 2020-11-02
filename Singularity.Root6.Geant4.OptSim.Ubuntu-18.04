@@ -125,10 +125,10 @@ python run_02_OptSim_run.py
 %apprun lut
 cd /Software/ArCubeOptSim/run
 export USRG="0"
-/Software/root_v6.22.02/bin/root.exe -l run_03_OptSim_createLUT.C
+python run_03_OptSim_createLUT.py
 
 %apprun lut_usr
 cd /Software/ArCubeOptSim/run
 export USRG="1"
 echo "preparing to read user defined voxel table ..."
-/Software/root_v6.22.02/bin/root.exe -l run_03_OptSim_createLUT.C
+python run_03_OptSim_createLUT.py
