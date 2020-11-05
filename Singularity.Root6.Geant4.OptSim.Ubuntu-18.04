@@ -5,7 +5,6 @@ From:ubuntu:18.04
 MAINTAINER Patrick Koller
 CONTACT patrick_koller@gmx.ch
 
-
 %post
 echo "This section happens once after bootstrap to build the image."
 apt-get -y update
