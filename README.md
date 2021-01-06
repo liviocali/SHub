@@ -77,6 +77,9 @@ After running the optical simulation, log and error files will appear in `output
 After running the LUT builder, the photon look-up-table will apper in `output/` as `OptSim_LUT_ArgonCube2x2.root`.
 
 ### [optional]
+#### User defined TPB thickness
+Place the file `preinit.mac` with custom TPB thickness in the folder `input/` before executing the simulation. The default `preinit.mac` can be found [here](https://github.com/PPKoller/ArCubeOptSim/tree/LUT/resources/macros/preinit.mac).
+
 #### Build and shell into writable sandbox image:
 ```bash
 sudo singularity build --sandbox OptSim OptSim.simg
