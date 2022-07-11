@@ -72,8 +72,8 @@ echo "  --app sim          ->  process voxels no. a to b, arguments: int(a) int(
 echo "  --app sim_usr_geo  ->  process voxels no. a to b, arguments: int(a) int(b), user-defined voxel table"
 echo "  --app sim_usr_opt  ->  process voxels no. a to b, arguments: int(a) int(b), user-defined opt. properties"
 echo "  --app sim_usr      ->  process voxels no. a to b, arguments: int(a) int(b), user-defined voxel table / opt. properties"
-echo "  --app lut          ->  produce photon look-up-table, arguments: none"
-echo "  --app lut_usr      ->  produce photon look-up-table, arguments: none, user-defined voxel table"
+echo "  --app lut          ->  produce photon look-up-table, arguments: float(SiPM_eff)"
+echo "  --app lut_usr      ->  produce photon look-up-table, arguments: float(SiPM_eff), user-defined voxel table"
 
 %apprun sim
 mkdir /output/macro_files /output/root_files /output/log_files
