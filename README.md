@@ -6,14 +6,26 @@ Recipes for Singularity images to be built on Singularity Hub.
 ## ArgonCube Optical Simulation [<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="30">](https://github.com/PPKoller/ArCubeOptSim) [<img src="https://github.com/PPKoller/SHub/blob/master/.ArCube_Logo.png" width="100" align="right">](https://argoncube.org/)
 ### 1. Pull the container image:
 The optical simulation software container can be pulled directly via the Singularity command:\
-(size ~ 1.4G)
+(size ~ 1.4G)\
+For 2x2 Module-0:
 ```bash
-singularity pull shub://PPKoller/SHub:root6.geant4.optsim.ubuntu-18.04
+singularity pull library://liviocali/ndlar_optsim/optsim_mod0:v2_0
+//singularity pull shub://PPKoller/SHub:root6.geant4.optsim.ubuntu-18.04
+```
+For 2x2 Module-1, 2 or 3
+```bash
+singularity pull library://liviocali/ndlar_optsim/optsim_mod123:v1_0
 ```
 ### 2. Image default checks:
 Performing the Singularity default checks should return `PASS: (retval=0)`.
 ```bash
-mv PPKoller-SHub-master-root6.geant4.optsim.ubuntu-18.04.simg OptSim.simg
+//mv PPKoller-SHub-master-root6.geant4.optsim.ubuntu-18.04.simg OptSim.simg
+mv optsim_mod0_v2_0.sif OptSim.simg
+singularity check --tag default OptSim.simg
+```
+or
+```bash
+mv optsim_mod123_v1_0.sif OptSim.simg
 singularity check --tag default OptSim.simg
 ```
 ### 3. Export I/O binding paths:
@@ -63,13 +75,13 @@ Run the simulation on voxels no. 0 to 9 with user defined statistics, voxel geom
   `singularity run --app sim_usr OptSim.simg 0 10`
     
 - **lut / lut_usr**\
-Build the photon look-up-table using the output created by running the simulation. Herefore, voxel number '0' needs to have been processed and the respective root file `OptSim_00000000.root` has to be present in `output/root_files/`.
+Build the photon look-up-table using the output created by running the simulation with a SiPM efficiency of 39%. Herefore, voxel number '0' needs to have been processed and the respective root file `OptSim_00000000.root` has to be present in `output/root_files/`.
 
-  `singularity run --app lut OptSim.simg`
+  `singularity run --app lut OptSim.simg 0.39`
   
   And in case the simulation was run with user defined statistics and voxel geometry:
 
-  `singularity run --app lut_usr OptSim.simg`
+  `singularity run --app lut_usr OptSim.simg 0.39`
   
 ### 6. Output
 After running the optical simulation, log and error files will appear in `output/log_files/` and root files will appear in `output/root_files/`.
