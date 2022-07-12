@@ -10,7 +10,6 @@ The optical simulation software container can be pulled directly via the Singula
 For 2x2 Module-0:
 ```bash
 singularity pull library://liviocali/ndlar_optsim/optsim_mod0:v2_0
-//singularity pull shub://PPKoller/SHub:root6.geant4.optsim.ubuntu-18.04
 ```
 For 2x2 Module-1, 2 or 3
 ```bash
@@ -19,14 +18,13 @@ singularity pull library://liviocali/ndlar_optsim/optsim_mod123:v1_0
 ### 2. Image default checks:
 Performing the Singularity default checks should return `PASS: (retval=0)`.
 ```bash
-//mv PPKoller-SHub-master-root6.geant4.optsim.ubuntu-18.04.simg OptSim.simg
-mv optsim_mod0_v2_0.sif OptSim.simg
-singularity check --tag default OptSim.simg
+mv optsim_mod0_v2_0.sif OptSim.sif
+singularity verify OptSim.sif
 ```
 or
 ```bash
-mv optsim_mod123_v1_0.sif OptSim.simg
-singularity check --tag default OptSim.simg
+mv optsim_mod123_v1_0.sif OptSim.sif
+singularity verify OptSim.sif
 ```
 ### 3. Export I/O binding paths:
 Using the environment variable `$SINGULARITY_BINDPATH` there won't be any need to bind I/O paths manually later.
@@ -37,7 +35,7 @@ export SINGULARITY_BINDPATH="input/:/input,output/:/output"
 ### 4. Run instructions:
 Running the container without any arguments will return a list of the available apps including a short description on what it does and what parameters you might need to provide.
 ```bash
-singularity run OptSim.simg
+singularity run OptSim.sif
 ```
 ### 5. Run apps:
 There are five apps available within the container: four simulaion related apps that run the optical simulation with different levels of user defined input and one app that allows you to build the photon look-up-table using the output created by running the simulation.
@@ -47,7 +45,7 @@ There are five apps available within the container: four simulaion related apps 
 - **sim**\
 Run the simulation on voxels no. 0 to 9 using the default statistics, voxel geometry and optical properties.
 
-  `singularity run --app sim OptSim.simg 0 10`
+  `singularity run --app sim OptSim.sif 0 10`
 
   *Statistics*: 1'000 events per voxel / 10'000 photons per event
   
@@ -58,30 +56,30 @@ Run the simulation on voxels no. 0 to 9 using the default statistics, voxel geom
 - **sim_usr_geo**\
 Run the simulation on voxels no. 0 to 9 with user defined statistics and voxel geometry. Herefore, the file `OptSim_LUT_voxel_table.txt` has to be placed in the folder `input/` before executing the simulation.
 
-  `singularity run --app sim_usr_geo OptSim.simg 0 10`
+  `singularity run --app sim_usr_geo OptSim.sif 0 10`
   
   The file `OptSim_LUT_voxel_table.txt` can be created by the Jupyter Notebook provided [here](create_OptSim_LUT_voxel_table.ipynb).
 
 - **sim_usr_opt**\
 Run the simulation on voxels no. 0 to 9 with user defined optical properties. Herefore, a folder `datafiles/` containing all optical properties files has to be placed in the folder `input/` before executing the simulation.
 
-  `singularity run --app sim_usr_opt OptSim.simg 0 10`
+  `singularity run --app sim_usr_opt OptSim.sif 0 10`
   
   The folder `datafiles/` containing the default optical properties files can be found [here](https://github.com/PPKoller/ArCubeOptSim/tree/LUT/resources/datafiles).
   
 - **sim_usr**\
 Run the simulation on voxels no. 0 to 9 with user defined statistics, voxel geometry and optical properties. (see instructions above)
 
-  `singularity run --app sim_usr OptSim.simg 0 10`
+  `singularity run --app sim_usr OptSim.sif 0 10`
     
 - **lut / lut_usr**\
-Build the photon look-up-table using the output created by running the simulation with a SiPM efficiency of 39%. Herefore, voxel number '0' needs to have been processed and the respective root file `OptSim_00000000.root` has to be present in `output/root_files/`.
+Build the photon look-up-table using the output created by running the simulation with a SiPM efficiency of 39% (Mod-0 25%, Mod-1 39%). Herefore, voxel number '0' needs to have been processed and the respective root file `OptSim_00000000.root` has to be present in `output/root_files/`.
 
-  `singularity run --app lut OptSim.simg 0.39`
+  `singularity run --app lut OptSim.sif 0.39`
   
   And in case the simulation was run with user defined statistics and voxel geometry:
 
-  `singularity run --app lut_usr OptSim.simg 0.39`
+  `singularity run --app lut_usr OptSim.sif 0.39`
   
 ### 6. Output
 After running the optical simulation, log and error files will appear in `output/log_files/` and root files will appear in `output/root_files/`.
@@ -94,10 +92,10 @@ Place the file `preinit.mac` with custom TPB thickness in the folder `input/` be
 
 #### Build and shell into writable sandbox image:
 ```bash
-sudo singularity build --sandbox OptSim OptSim.simg
+sudo singularity build --sandbox OptSim OptSim.sif
 sudo singularity shell --writable OptSim
 ```
 #### Build compressed read-only squashfs image from sandbox image:
 ```bash
-sudo singularity build OptSim_edited.simg OptSim
+sudo singularity build OptSim_edited.sif OptSim
 ```
