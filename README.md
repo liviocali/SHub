@@ -4,12 +4,18 @@ Recipes for Singularity images to be built on Singularity Hub.
 [![https://www.singularity-hub.org/static/img/hosted-singularity--hub-%23e32929.svg](https://www.singularity-hub.org/static/img/hosted-singularity--hub-%23e32929.svg)](https://singularity-hub.org/collections/4666)
 
 ## ArgonCube Optical Simulation [<img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="30">](https://github.com/PPKoller/ArCubeOptSim) [<img src="https://github.com/PPKoller/SHub/blob/master/.ArCube_Logo.png" width="100" align="right">](https://argoncube.org/)
+
+
 ### 1. Pull the container image:
+First pull verification key:
+```bash
+singularity key pull A74587B3F8E5E651C40B0D6D01454D9DB5CA14F2
+```
 The optical simulation software container can be pulled directly via the Singularity command:\
 (size ~ 1.4G)\
 For 2x2 Module-0:
 ```bash
-singularity pull library://liviocali/ndlar_optsim/optsim_mod0:v2_0
+singularity pull library://liviocali/ndlar_optsim/optsim_mod0:v1_0
 ```
 For 2x2 Module-1, 2 or 3
 ```bash
@@ -18,7 +24,7 @@ singularity pull library://liviocali/ndlar_optsim/optsim_mod123:v1_0
 ### 2. Image default checks:
 Performing the Singularity default checks should return `PASS: (retval=0)`.
 ```bash
-mv optsim_mod0_v2_0.sif OptSim.sif
+mv optsim_mod0_v1_0.sif OptSim.sif
 singularity verify OptSim.sif
 ```
 or
