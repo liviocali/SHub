@@ -2,8 +2,8 @@ Bootstrap:docker
 From:ubuntu:18.04
 
 %labels
-MAINTAINER Patrick Koller
-CONTACT patrick_koller@gmx.ch
+MAINTAINER Livio Calivers
+CONTACT livio.calivers@lhep.unibe.ch
 
 %post
 echo "This section happens once after bootstrap to build the image."
@@ -20,10 +20,10 @@ mv root root_v6.22.02
 rm root_v6.22.02.Linux-ubuntu18-x86_64-gcc7.5.tar.gz
 
 cd /Software/
-wget https://downloads.apache.org//xerces/c/3/sources/xerces-c-3.2.3.tar.gz
-tar -xf xerces-c-3.2.3.tar.gz
-rm xerces-c-3.2.3.tar.gz
-cd xerces-c-3.2.3/
+wget https://downloads.apache.org//xerces/c/3/sources/xerces-c-3.2.4.tar.gz
+tar -xf xerces-c-3.2.4.tar.gz
+rm xerces-c-3.2.4.tar.gz
+cd xerces-c-3.2.4/
 ./configure
 make -j 8
 make install -j 8
@@ -57,6 +57,8 @@ cmake -DCMAKE_PREFIX_PATH="/Software/root_v6.22.02;/Software/geant4.10.06.p02-in
 make -j 4
 cd /Software/ArCubeOptSim/resources/gdml/
 cp module0.gdml OptSim.gdml
+cd /Software/ArCubeOptSim/run
+cp OptSim_LUT_voxel_table_2x2.txt OptSim_LUT_voxel_table.txt 
 
 
 %environment
@@ -73,7 +75,8 @@ echo "  --app sim_usr_geo  ->  process voxels no. a to b, arguments: int(a) int(
 echo "  --app sim_usr_opt  ->  process voxels no. a to b, arguments: int(a) int(b), user-defined opt. properties"
 echo "  --app sim_usr      ->  process voxels no. a to b, arguments: int(a) int(b), user-defined voxel table / opt. properties"
 echo "  --app lut          ->  produce photon look-up-table, arguments: float(SiPM_eff)"
-echo "  --app lut_usr      ->  produce photon look-up-table, arguments: float(SiPM_eff), user-defined voxel table"
+echo "  --app lut_range    ->  produce photon look-up-table, arguments: float(SiPM_eff), int(start_voxel), int(stop_voxel)"
+echo "  --app lut_usr      ->  produce photon look-up-table, arguments: float(SiPM_eff), int(start_voxel), int(stop_voxel), user-defined voxel table"
 
 %apprun sim
 mkdir /output/macro_files /output/root_files /output/log_files
@@ -127,11 +130,23 @@ python run_02_OptSim_run.py
 cd /Software/ArCubeOptSim/run
 export USRG="0"
 export SIPMEFF=$1
+export STARTVOX=0
+export STOPVOX=-1
+python run_03_OptSim_createLUT.py
+
+%apprun lut_range
+cd /Software/ArCubeOptSim/run
+export USRG="0"
+export SIPMEFF=$1
+export STARTVOX=$2
+export STOPVOX=$3
 python run_03_OptSim_createLUT.py
 
 %apprun lut_usr
 cd /Software/ArCubeOptSim/run
 export USRG="1"
 export SIPMEFF=$1
+export STARTVOX=$2
+export STOPVOX=$3
 echo "preparing to read user defined voxel table ..."
 python run_03_OptSim_createLUT.py
